@@ -4,11 +4,6 @@
 O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na web capaz de conectar alunos, professores e responsáveis para a discussão, ensino e conscientização sobre educação financeira.
 Como objetivos específicos destacamos:
 
-* Desenvolver um ambiente de uso intuitivo para crianças e responsáveis;
-* Desenvolver uma seção no site para divulgação de notícias e histórias de usuários;
-* Permitir uma conexão autônoma, fácil e rápida entre professores e clientes.
-
-
 ## Alunos integrantes da equipe
 
 * Arthur Davi Alves Barbosa
