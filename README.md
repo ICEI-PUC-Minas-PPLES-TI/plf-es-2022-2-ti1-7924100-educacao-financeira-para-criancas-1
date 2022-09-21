@@ -1,18 +1,26 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8475903&assignment_repo_type=AssignmentRepo)
-# Nome do projeto
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+# Bank-Id
+
+O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na web capaz de conectar alunos, professores e responsáveis para a discussão, ensino e conscientização sobre educação financeira.
+Como objetivos específicos destacamos:
+
+* Desenvolver um ambiente de uso intuitivo para crianças e responsáveis;
+* Desenvolver uma seção no site para divulgação de notícias e histórias de usuários;
+* Permitir uma conexão autônoma, fácil e rápida entre professores e clientes.
+
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Arthur Davi Alves Barbosa
+* Bruno Rocha Corrêa Urbano
+* Leonardo Lopes de Vasconcellos Paes
+* Pedro de Barros Alves
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Roberto Felipe Dias Ferreira Da Rocha
+* Rommel Vieira Carneiro
+* Felipe Augusto Lara Soares
 
 ## Instruções de utilização
 
