@@ -2,7 +2,6 @@
 # Bank-Id
 
 O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na web capaz de conectar alunos, professores e responsáveis para a discussão, ensino e conscientização sobre educação financeira.
-Como objetivos específicos destacamos:
 
 ## Alunos integrantes da equipe
 
