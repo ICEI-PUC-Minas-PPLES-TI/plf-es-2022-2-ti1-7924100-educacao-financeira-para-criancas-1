@@ -26,4 +26,6 @@ Tendo em vista os fatos citados acima, é evidente a importância deste tipo de 
 ## Público Alvo
 
 Por mais que a sociedade como um todo se beneficie de iniciativas ligadas à educação financeira, o objetivo deste trabalho está diretamente ligado a uma teoria e filosofia específica: a educação financeira faz parte de um amadurecimento de indivíduos inseridos em uma sociedade fruto de um contrato social, e como todo amadurecimento, é mais efetivo se iniciado na infância.
-Baseado nesta filosofia, o público alvo desta iniciativa foi definido como crianças de 3 a 14 anos de idade (e seus devidos responsáveis, peças chave neste ensino), de todas as classes sócio-econômicas da sociedade brasileira. 
+Baseado nesta filosofia, o público alvo desta iniciativa foi definido como crianças de 8 a 14 anos de idade, cursando o ensino fundamental (e seus devidos responsáveis, peças chave neste ensino), de todas as classes sócio-econômicas da sociedade brasileira.
+Além disso, os professores são peças chave neste projeto, e portanto também um público alvo. Considerando as características gerais de professores no Brasil, o público alvo de profissionais para este projeto são: professores entre 20 e 50 anos com nível avançado de escolaridade sobre finanças e matemática financeira.
+
