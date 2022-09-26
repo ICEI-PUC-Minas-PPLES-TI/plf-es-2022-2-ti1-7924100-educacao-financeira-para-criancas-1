@@ -33,13 +33,14 @@ A tabela abaixo apresenta os requisitos funcionais do projeto e suas respectivas
 
 | `ID` | `Descrição` | `Prioridade` |
 |---------------------|------------------------------------|----------------------------------------|
-| RF-01 |  | Alta |
-| RF-02 |  | Alta |
-| RF-03 |  | Alta |
-| RF-04 |  | Média |
-| RF-05 |  | Média |
-| RF-06 |  | Baixa |
-| RF-07 |  | Alta |
-| RF-08 |  | Alta |
-| RF-09 |  | Média |
-| RF-10 |  | Média |
+| RF-01 | O site deve permitir que o professor realize o cadastro do seu perfil. | Alta |
+| RF-02 | O site deve permitir que os pais e alunos realizem o cadastro do seu perfil. | Alta |
+| RF-03 | O site deve permitir aos usuários que detalhem informações relevantes no cadastro como nome, idade, celular, nível de conhecimento financeiro, objetivos. | Alta |
+| RF-04 | O site deve notificar o professor quando houver a demanda por aula de um aluno. | Média |
+| RF-05 | O site deve permitir que professor e aluno entrem em contato por meio de um chat após a notificação. | Média |
+| RF-06 | O site deve oferecer um menu que permita ao usuário escolher entre as opções: Notícias, Cadastro de Aluno, Cadastro de Professor.
+ | Baixa |
+| RF-07 | O site deve apresentar notícias dinâmicas obtidas mediante canais de notícias relacionadas ao setor financeiro na Internet (API). | Alta |
+| RF-08 | O site deve permitir ao usuário a visualização completa das notícias. | Alta |
+| RF-09 | O site deve permitir que pais e alunos possam comentar sobre as aulas dos professores. | Média |
+| RF-10 | O site deve exibir os comentários/feedbacks sobre as aulas registrados na página de perfil do professor. | Média |
