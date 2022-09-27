@@ -11,5 +11,5 @@ Trabalho Interdisciplinar - Aplicacões Web
 1. [Contexto](Contexto.md)
 2. [Especificações do Projeto](Especificacao.md)
 3. [Projeto da Interface](Interface.md)
-4. [Metodologia](Metologia.md)
+4. [Metodologia](Metodologia.md)
 5. [Gerenciamento de Projeto](Gerenciamento-Proejto.md)
