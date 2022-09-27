@@ -9,6 +9,7 @@ O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na
 * Bruno Rocha Corrêa Urbano
 * Leonardo Lopes de Vasconcellos Paes
 * Pedro de Barros Alves
+* João Vitor Eliazar de Almeida Rocha
 
 ## Professores responsáveis
 
