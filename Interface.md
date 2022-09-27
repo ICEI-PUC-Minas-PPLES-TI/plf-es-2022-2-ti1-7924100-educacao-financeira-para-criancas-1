@@ -7,7 +7,7 @@
 ![tela_inicial](https://user-images.githubusercontent.com/84548394/192657029-aaf86abd-7938-4fa2-b710-d08901608d3c.png)
 
 ## Tela das Notícias
-[tela_noticias](https://user-images.githubusercontent.com/84548394/192657025-43322c02-3255-4c3d-a29a-5f673a2f17d3.png)
+![tela_noticias](https://user-images.githubusercontent.com/84548394/192657161-7d9a3a5b-2a0a-44af-89a9-03eda233a359.png)
 
 ## Tela dos Cursos
 ![tela_cursos](https://user-images.githubusercontent.com/84548394/192657024-b733cd48-a016-4550-b695-8dab77604f84.png)
