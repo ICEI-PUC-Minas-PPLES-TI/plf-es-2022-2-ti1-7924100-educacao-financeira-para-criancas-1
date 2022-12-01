@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank-ID</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <h1>Cadastro de Alunos</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+            </div>
+        </div>
+
+        <form id="form-aluno">
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="inputId">ID</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
+                </div>
+                <div class="col-sm-8">
+                    <label for="inputNome">Nome*</label>
+                    <input type="text" class="form-control" id="inputNome" required placeholder="Insira o nome do aluno">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputIdade">Idade*</label>
+                    <input type="number" class="form-control" id="inputIdade" required placeholder="Insira a idade do aluno">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputEscolaridade">Escolaridade*</label>
+                    <select class="form-control" id="inputEscolaridade" required>
+                        <option selected>Educação básica</option>
+                        <option>Ensino Fundamental I</option>
+                        <option>Ensino Fundamental II</option>
+                        <option>Ensino Médio</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputResponsavel">Nome do responsável*</label>
+                    <input type="text" class="form-control" id="inputResponsavel" required placeholder="Insira o nome do responsável">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputTelefone">Telefone*</label>
+                    <input type="text" class="form-control" id="inputTelefone" required placeholder="Insira o telefone do responsável">
+                </div>
+            </div>
+            <div class="form-group row">    
+                <div class="col-sm-6">
+                    <label for="inputUf">Estado*</label>
+                    <select class="form-control" id="inputUf" required>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputCidade">Cidade*</label>
+                    <select class="form-control" id="inputCidade" required>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <small>*Campos obrigatórios</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
+                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
+                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
+                    <a href="lista_aluno.html"><input type="button" class="btn btn-info" id="btnClear" value="Pesquisar Aluno"></a>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-aluno" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Escolaridade</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-aluno">
+                        <tr>
+                            <td scope="row">1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function exibeAluno() {
+            // Remove todas as linhas do corpo da tabela
+            $("#table-aluno").html("");
+
+            // Popula a tabela com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let aluno = db.data[i];    
+                $("#table-aluno").append(`<tr><td scope="row">${aluno.id}</td>
+                                                <td>${aluno.nome}</td>
+                                                <td>${aluno.idade}</td>
+                                                <td>${aluno.escolaridade}</td>
+                                                <td>${aluno.responsavel}</td>
+                                                <td>${aluno.telefone}</td>
+                                                <td>${aluno.uf}</td>
+                                                <td>${aluno.cidade}</td>
+                                            </tr>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#btnInsert").click(function () {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-aluno')[0].checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val();
+                let campoIdade = $("#inputIdade").val();
+                let campoEscolaridade = $('#inputEscolaridade').val();
+                let campoResponsavel = $('#inputResponsavel').val();
+                let campoTelefone = $('#inputTelefone').val();
+                let campoUf = $('#inputUf').val();
+                let campoCidade = $('#inputCidade').val();
+                let aluno = { nome: campoNome,
+                    idade: campoIdade,
+                    escolaridade: campoEscolaridade,
+                    responsavel: campoResponsavel,
+                    telefone: campoTelefone,  
+                    uf: campoUf,
+                    cidade: campoCidade };
+
+                insertAluno(aluno);
+
+                // Reexibe os alunos
+                exibeAluno();
+
+                // Limpa o formulario
+                $("#form-aluno")[0].reset();
+            });
+
+            // Intercepta o click do botão Alterar
+            $("#btnUpdate").click(function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um aluno para ser alterado.");
+                    return;
+                }
+                let campoNome = $("#inputNome").val();
+                let campoIdade = $("#inputIdade").val();
+                let campoEscolaridade = $("#inputEscolaridade").val();
+                let campoResponsavel = $("#inputResponsavel").val();
+                let campoTelefone = $("#inputTelefone").val();
+                let campoUf = $('#inputUf').val();
+                let campoCidade = $('#inputCidade').val();
+                let aluno = { nome: campoNome,
+                    idade: campoIdade,
+                    escolaridade: campoEscolaridade,
+                    responsavel: campoResponsavel,
+                    telefone: campoTelefone,  
+                    uf: campoUf,
+                    cidade: campoCidade };
+
+                updateAluno(parseInt(campoId), aluno);
+
+                // Reexibe os alunos
+                exibeAluno();
+
+                // Limpa o formulario
+                $("#form-aluno")[0].reset();
+            });
+
+            // Intercepta o click do botão Excluir
+            $("#btnDelete").click(function () {
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um aluno a ser excluído.");
+                    return;
+                }
+                deleteAluno(parseInt(campoId));
+
+                // Reexibe os aluno
+                exibeAluno();
+
+                // Limpa o formulario
+                $("#form-aluno")[0].reset();
+            });
+
+            // Intercepta o click do botão Listar Aluno
+            $("#btnClear").click(function () {
+                $("#form-aluno")[0].reset();
+            });
+
+            // Oculta a mensagem de aviso após alguns segundos
+            $('#msg').bind("DOMSubtreeModified", function () {
+                window.setTimeout(function () {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            $("#grid-aluno").on("click", "tr", function (e) {
+                let linhaAluno = this;
+                colunas = linhaAluno.querySelectorAll("td");
+
+                $("#inputId").val(colunas[0].innerText);
+                $("#inputNome").val(colunas[1].innerText);
+                $("#inputIdade").val(colunas[2].innerText);
+                $("#inputEscolaridade").val(colunas[3].innerText);
+                $("#inputResponsavel").val(colunas[4].innerText);
+                $("#inputTelefone").val(colunas[5].innerText);
+                //$("#inputUf").val(colunas[6].innerText);
+                //$("#inputCidade").val(colunas[7].innerText);
+            });
+
+            exibeAluno();
+        }
+    </script>
+</body>
+
+</html>

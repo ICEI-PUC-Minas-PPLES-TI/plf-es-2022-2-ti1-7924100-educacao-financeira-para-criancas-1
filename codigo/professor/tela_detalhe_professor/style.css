@@ -1,0 +1,78 @@
+*{
+    margin:15px;
+    padding:0;
+}
+
+.telona {
+    display:flex;
+    justify-content: center;
+
+}
+
+
+
+
+#fotinea {
+    width:300px;
+    height:300px;
+    display: flex;
+    justify-content: center;   
+    margin-right:25px;
+}
+
+.informacoes-professores{
+    
+    flex-flow: column wrap;
+    justify-content: space-between;
+    margin-top: px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-start;
+    
+    
+}
+
+h5 {
+    font-family: 'ars-maquette-web',sans-serif;
+    letter-spacing: -0.5px;
+    color: rgb(68, 65, 65);
+    font-size: 10px;
+}
+
+#nome {
+    color: rgb(68, 65, 65);
+}
+
+#profissao {
+    color: rgb(68, 65, 65);
+}
+
+#metodologia{
+    color: rgb(68, 65, 65);
+}
+
+#valor {
+    color: rgb(68, 65, 65);
+}
+
+#email {
+    color: rgb(68, 65, 65);
+}
+
+#telefone {
+    color: rgb(68, 65, 65);
+}
+
+#botao {
+    width:800px;
+
+}
+
+.botao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}

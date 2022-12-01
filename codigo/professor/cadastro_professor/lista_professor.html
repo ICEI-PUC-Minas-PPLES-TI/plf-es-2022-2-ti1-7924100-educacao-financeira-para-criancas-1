@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Professores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="ListaProfessor()">
+    <h1>Listagem de Professores</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Professor não encontrado.</div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="msg" class="col-sm-2 offset-sm-10">
+                <a href="index.html"><input type="button" class="btn btn-warning" id="btnClear" value="Voltar ao Cadastro"></a>
+            </div>
+        </div>
+
+        <form id="form-professor"> <!--Aqui depois fazer um filtro para cidade e estado alterar la em baixo onde está o filtro_metodologia-->
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <select name="filtro_uf" id="filtro_uf" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Estado</option>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select name="filtro_metodologia" id="filtro_metodologia" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Metodologia de Ensino</option>
+                        <option value="Slides">Slides</option>
+                        <option value="Livros">Livros</option>
+                        <option value="Slides e atividades">Slides e atividades</option>
+                        <option value="Livros e atividades">Livros e atividades</option>
+                        <option value="Slides, livros e atividades">Slides, livros e atividades</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select name="filtro_preco" id="filtro_preco" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Valor da aula</option>
+                        <option value="Até R$50,00">Até R$50,00</option>
+                        <option value="De R$50,00 a R$100,00">De R$50,00 a R$100,00</option>
+                        <option value="De R$100,00 a R$150,00">De R$100,00 a R$150,00</option>
+                        <option value="De R$150,00 a R$200,00">De R$150,00 a R$200,00</option>
+                        <option value="De R$200,00 a R$250,00">De R$200,00 a R$250,00</option>
+                        <option value="De R$250,00 a R$300,00">De R$250,00 a R$300,00</option>
+                        <option value="De R$300,00 a R$400,00">De R$300,00 a R$400,00</option>
+                        <option value="De R$400,00 a R$500,00">De R$400,00 a R$500,00</option>
+                        <option value="Acima de R$500,00">Acima de R$500,00</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-professor" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Profissão</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Metodologia de Ensino</th>
+                            <th scope="col">Valor da aula</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-professor">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // função para listar na tabela os professores que estão associados aos filtros 
+        function ListaProfessor() {
+
+            // Obtem os dados informados pelo usuário nos filtros
+            let fm = document.getElementById('filtro_metodologia').value;
+            let fuf = document.getElementById('filtro_uf').value;
+            let fpr = document.getElementById('filtro_preco').value;
+
+            // limpa a lista de professores apresentados
+            $("#table-professor").empty();
+
+            // Popula a tabela com os registros do banco de dados
+            for (let index = 0; index < db.data.length; index++) {
+                const professor = db.data[index];
+
+                // Verifica se os dados do professor batem com os filtros
+                if (((professor.metodologia == fm) || (fm == '')) &&
+                    ((professor.uf == fuf) || (fuf == '')) &&
+                    ((professor.preco == fpr) || (fpr == ''))){
+
+                    // Inclui o professor na tabela    
+                    $("#table-professor").append(`<tr><td scope="row">${professor.id}</td>
+                                                    <td>${professor.nome}</td>
+                                                    <td>${professor.telefone}</td>
+                                                    <td>${professor.email}</td>
+                                                    <td>${professor.profissao}</td>
+                                                    <td>${professor.uf}</td>
+                                                    <td>${professor.cidade}</td>
+                                                    <td>${professor.metodologia}</td>
+                                                    <td>${professor.preco}</td>
+                                                </tr>`);
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

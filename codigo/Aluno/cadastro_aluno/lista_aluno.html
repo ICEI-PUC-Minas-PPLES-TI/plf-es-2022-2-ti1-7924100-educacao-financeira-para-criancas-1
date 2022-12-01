@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="ListaAluno()">
+    <h1>Listagem de Alunos</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="msg" class="col-sm-2 offset-sm-10">
+                <a href="index.html"><input type="button" class="btn btn-warning" id="btnClear" value="Voltar ao Cadastro"></a>
+            </div>
+        </div>
+
+        <form id="form-aluno">
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <select name="filtro_uf" id="filtro_uf" onchange="ListaAluno()"
+                        class="form-control">
+                        <option value="">Filtrar por Estado</option>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <select name="filtro_escolaridade" id="filtro_escolaridade" onchange="ListaAluno()"
+                        class="form-control">
+                        <option value="">Filtrar por Escolaridade</option>
+                        <option value="Educação básica">Educação básica</option>
+                        <option value="Ensino Fundamental I">Ensino Fundamental I</option>
+                        <option value="Ensino Fundamental II">Ensino Fundamental II</option>
+                        <option value="Ensino Médio">Ensino Médio</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-aluno" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Escolaridade</th>
+                            <th scope="col">Responsável</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-aluno">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // função para listar na tabela os alunos que estão associados aos filtros 
+        function ListaAluno() {
+
+            // Obtem os dados informados pelo usuário nos filtros
+            let fe = document.getElementById('filtro_escolaridade').value;
+            let fuf = document.getElementById('filtro_uf').value;
+
+            // limpa a lista de alunos apresentados
+            $("#table-aluno").empty();
+
+            // Popula a tabela com os registros do banco de dados
+            for (let index = 0; index < db.data.length; index++) {
+                const aluno = db.data[index];
+
+                // Verifica se os dados do aluno batem com os filtros
+                if (((aluno.escolaridade == fe) || (fe == '')) &&
+                    ((aluno.uf == fuf) || (fuf == ''))){
+
+                    // Inclui o aluno na tabela    
+                    $("#table-aluno").append(`<tr><td scope="row">${aluno.id}</td>
+                                                    <td>${aluno.nome}</td>
+                                                    <td>${aluno.idade}</td>
+                                                    <td>${aluno.escolaridade}</td>
+                                                    <td>${aluno.responsavel}</td>
+                                                    <td>${aluno.telefone}</td>
+                                                    <td>${aluno.uf}</td>
+                                                    <td>${aluno.cidade}</td>
+                                                </tr>`);
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

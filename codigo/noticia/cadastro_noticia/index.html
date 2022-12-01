@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Notícias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <h1>Cadastro de Notícias (CRUD)</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">noticia não encontrado.</div>-->
+            </div>
+        </div>
+
+        <form id="form-noticia">
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="inputId">Id</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
+                </div>
+                <div class="col-sm-8">
+                    <label for="inputtitulo">Título (*)</label>
+                    <input type="text" class="form-control" id="inputtitulo" required
+                        placeholder="Informe o título do noticia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for="inputautor">Autor (*)</label>
+                    <input type="text" class="form-control" id="inputautor" required placeholder="Autor">
+                </div>
+                <div class="col-sm-7">
+                    <label for="inputlink">Link (*)</label>
+                    <input type="link" class="form-control" id="inputlink" required placeholder="Informe o link">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputdata_publicacao">Data de Publicação</label>
+                    <input type="text" class="form-control" id="inputdata_publicacao"
+                        placeholder="Informe a data de publicação da notícia">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputCategoria">Categoria</label>
+                    <input type="text" class="form-control" id="inputCategoria" required
+                        placeholder="Informe a categoria do notícia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <small>(*) Campos obrigatórios</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
+                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
+                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
+                    <a href="lista_noticias.html"><input type="button" class="btn btn-warning" id="btnClear"
+                            value="Pesquisar notícias"></a>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-noticias" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Data de Publicação</th>
+                            <th scope="col">Categoria</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table-noticias">
+                        <tr>
+                            <td scope="row">1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function exibenoticias() {
+            // Remove todas as linhas do corpo da tabela
+            $("#table-noticias").html("");
+
+            // Popula a tabela com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let noticia = db.data[i];
+                $("#table-noticias").append(`<tr><td scope="row">${noticia.id}</td>
+                                                <td>${noticia.titulo}</td>
+                                                <td>${noticia.autor}</td>
+                                                <td>${noticia.link}</td>
+                                                <td>${noticia.data_publicacao}</td>
+                                                <td>${noticia.categoria}</td>
+                                            </tr>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#btnInsert").click(function () {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-noticia')[0].checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campotitulo = $("#inputtitulo").val();
+                let campoautor = $("#inputautor").val();
+                let campolink = $('#inputlink').val();
+                let campodata_publicacao = $("#inputdata_publicacao").val();
+                let campoCategoria = $('#inputCategoria').val();
+                
+                let noticia = {
+                    titulo: campotitulo,
+                    autor: campoautor,
+                    link: campolink,
+                    data_publicacao: campodata_publicacao,
+                    categoria: campoCategoria,
+                 
+                };
+
+                insertnoticia(noticia);
+
+                // Reexibe os noticias
+                exibenoticias();
+
+                // Limpa o formulario
+                $("#form-noticia")[0].reset();
+            });
+
+            // Intercepta o click do botão Alterar
+            $("#btnUpdate").click(function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um noticia para ser alterado.");
+                    return;
+                }
+                let campotitulo = $("#inputtitulo").val();
+                let campoautor = $("#inputautor").val();
+                let campolink = $("#inputlink").val();
+                let campodata_publicacao = $("#inputdata_publicacao").val();
+                let campoCategoria = $("#inputCategoria").val();
+             
+                let noticia = {
+                    titulo: campotitulo,
+                    autor: campoautor,
+                    link: campolink,
+                    data_publicacao: campodata_publicacao,
+                    categoria: campoCategoria,
+                  
+                };
+
+                updatenoticia(parseInt(campoId), noticia);
+
+                // Reexibe os noticias
+                exibenoticias();
+
+                // Limpa o formulario
+                $("#form-noticia")[0].reset();
+            });
+
+            // Intercepta o click do botão Excluir
+            $("#btnDelete").click(function () {
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um noticia a ser excluído.");
+                    return;
+                }
+                deletenoticia(parseInt(campoId));
+
+                // Reexibe os noticias
+                exibenoticias();
+
+                // Limpa o formulario
+                $("#form-noticia")[0].reset();
+            });
+
+            // Intercepta o click do botão Listar noticias
+            $("#btnClear").click(function () {
+                $("#form-noticia")[0].reset();
+            });
+
+            // Oculta a mensagem de aviso após alguns segundos
+            $('#msg').bind("DOMSubtreeModified", function () {
+                window.setTimeout(function () {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            $("#grid-noticias").on("click", "tr", function (e) {
+                let linhanoticia = this;
+                colunas = linhanoticia.querySelectorAll("td");
+
+                $("#inputId").val(colunas[0].innerText);
+                $("#inputtitulo").val(colunas[1].innerText);
+                $("#inputautor").val(colunas[2].innerText);
+                $("#inputlink").val(colunas[3].innerText);
+                $("#inputdata_publicacao").val(colunas[4].innerText);
+                $("#inputCategoria").val(colunas[5].innerText);
+            
+            });
+
+            exibenoticias();
+        }
+    </script>
+</body>
+
+</html>

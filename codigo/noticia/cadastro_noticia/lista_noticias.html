@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Notícias</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="Listanoticias()">
+    <h1>Listagem de noticias</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">noticia não encontrado.</div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="msg" class="col-sm-2 offset-sm-10 ">
+                <a href="index.html"><input type="button" class="btn btn-warning" id="btnClear" value="Cadastro"></a>
+            </div>
+        </div>
+
+        <form id="form-noticia">
+            <div class="form-group row">
+
+                <div class="col-sm-12">
+                    <select name="filtro_categoria" id="filtro_categoria" onchange="Listanoticias()"
+                        class="form-control">
+                        <option value="">Selecione a Categoria</option>
+                        <option value="filhos">Filhos</option>
+                        <option value="escola">Escola</option>
+                        <option value="economizar">Economizar</option>
+                        <option value="reserva de emergencia">Reserva de Emergência</option>
+                        <option value="educacao">Educação</option>
+                        <option value="casal">Casal</option>
+                        <option value="criancas">Crianças</option>
+
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-noticias" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">titulo</th>
+                            <th scope="col">autor</th>
+                            <th scope="col">link</th>
+                            <th scope="col">data_publicacao</th>
+                            <th scope="col">Categoria</th>
+               
+                        </tr>
+                    </thead>
+                    <tbody id="table-noticias">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // função para listar na tabela os noticias que estão associados aos filtros 
+        function Listanoticias() {
+
+            // Obtem os dados informados pelo usuário nos filtros
+            let fcg = document.getElementById('filtro_categoria').value;
+
+            // limpa a lista de noticias apresentados
+            $("#table-noticias").empty();
+
+            // Popula a tabela com os registros do banco de dados
+            for (let index = 0; index < db.data.length; index++) {
+                const noticia = db.data[index];
+
+                // Verifica se os dados do noticia batem com os filtros
+                if ((noticia.categoria == fcg) || (fcg == '')) {
+
+                    // Inclui o noticia na tabela    
+                    $("#table-noticias").append(`<tr><td scope="row">${noticia.id}</td>
+                                                    <td>${noticia.titulo}</td>
+                                                    <td>${noticia.autor}</td>
+                                                    <td>${noticia.link}</td>
+                                                    <td>${noticia.data_publicacao}</td>
+                                                    <td>${noticia.categoria}</td>
+                                                </tr>`);
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

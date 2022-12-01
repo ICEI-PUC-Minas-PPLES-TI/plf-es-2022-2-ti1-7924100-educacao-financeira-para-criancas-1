@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank-ID</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+    <h1>Cadastro de Professores</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Professor não encontrado.</div>-->
+            </div>
+        </div>
+
+        <form id="form-professor">
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="inputId">ID</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
+                </div>
+                <div class="col-sm-8">
+                    <label for="inputNome">Nome*</label>
+                    <input type="text" class="form-control" id="inputNome" required placeholder="Insira seu nome">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="inputTelefone">Telefone*</label>
+                    <input type="text" class="form-control" id="inputTelefone" required placeholder="Insira o seu telefone">
+                </div>
+                <div class="col-sm-4">
+                    <label for="inputEmail">E-mail*</label>
+                    <input type="email" class="form-control" id="inputEmail" required placeholder="Insira o seu e-mail">
+                </div>
+                <div class="col-sm-4">
+                    <label for="inputProfissao">Profissão*</label>
+                    <input type="text" class="form-control" id="inputProfissao" required placeholder="Insira a sua profissão">
+                </div>
+            </div>
+            <div class="form-group row">    
+                <div class="col-sm-6">
+                    <label for="inputUf">Estado*</label>
+                    <select class="form-control" id="inputUf" required>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputCidade">Cidade*</label>
+                    <select class="form-control" id="inputCidade" required>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputMetodologia">Metodologia de Ensino*</label>
+                    <select class="form-control" id="inputMetodologia" required>
+                        <option selected>Slides</option>
+                        <option>Livros</option>
+                        <option>Slides e atividades</option>
+                        <option>Livros e atividades</option>
+                        <option>Slides, livros e atividades</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputPreco">Valor da aula*</label>
+                    <select class="form-control" id="inputPreco" required>
+                        <option selected>Até R$50,00</option>
+                        <option>De R$50,00 a R$100,00</option>
+                        <option>De R$100,00 a R$150,00</option>
+                        <option>De R$150,00 a R$200,00</option>
+                        <option>De R$200,00 a R$250,00</option>
+                        <option>De R$250,00 a R$300,00</option>
+                        <option>De R$300,00 a R$400,00</option>
+                        <option>De R$400,00 a R$500,00</option>
+                        <option>Acima de R$500,00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <small>*Campos obrigatórios</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
+                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
+                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
+                    <a href="lista_professor.html"><input type="button" class="btn btn-info" id="btnClear" value="Pesquisar Professor"></a>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-professor" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Profissão</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Metodologia de Ensino</th>
+                            <th scope="col">Valor da aula</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-professor">
+                        <tr>
+                            <td scope="row">1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function exibeProfessor() {
+            // Remove todas as linhas do corpo da tabela
+            $("#table-professor").html("");
+
+            // Popula a tabela com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let professor = db.data[i];    
+                $("#table-professor").append(`<tr><td scope="row">${professor.id}</td>
+                                                <td>${professor.nome}</td>
+                                                <td>${professor.telefone}</td>
+                                                <td>${professor.email}</td>
+                                                <td>${professor.profissao}</td>
+                                                <td>${professor.uf}</td>
+                                                <td>${professor.cidade}</td>
+                                                <td>${professor.metodologia}</td>
+                                                <td>${professor.preco}</td>
+                                            </tr>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#btnInsert").click(function () {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-professor')[0].checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val();
+                let campoTelefone = $("#inputTelefone").val();
+                let campoEmail = $('#inputEmail').val();
+                let campoProfissao = $('#inputProfissao').val();
+                let campoUf = $('#inputUf').val();
+                let campoCidade = $('#inputCidade').val();
+                let campoMetodologia = $('#inputMetodologia').val();
+                let campoPreco = $('#inputPreco').val();
+                let professor = { nome: campoNome, 
+                    telefone: campoTelefone, 
+                    email: campoEmail, 
+                    profissao: campoProfissao,
+                    uf: campoUf,
+                    cidade: campoCidade,                    
+                    metodologia: campoMetodologia,                    
+                    preco: campoPreco };
+
+                insertProfessor(professor);
+
+                // Reexibe os professores
+                exibeProfessor();
+
+                // Limpa o formulario
+                $("#form-professor")[0].reset();
+            });
+
+            // Intercepta o click do botão Alterar
+            $("#btnUpdate").click(function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um professor para ser alterado.");
+                    return;
+                }
+                let campoNome = $("#inputNome").val();
+                let campoTelefone = $("#inputTelefone").val();
+                let campoEmail = $("#inputEmail").val();
+                let campoProfissao = $("#inputProfissao").val();
+                let campoUf = $('#inputUf').val();
+                let campoCidade = $('#inputCidade').val();
+                let campoMetodologia = $("#inputMetodologia").val();
+                let campoPreco = $('#inputPreco').val();
+                let professor = { nome: campoNome, 
+                    telefone: campoTelefone, 
+                    email: campoEmail, 
+                    profissao: campoProfissao,
+                    uf: campoUf,
+                    cidade: campoCidade,                    
+                    metodologia: campoMetodologia, 
+                    preco: campoPreco };
+
+                updateProfessor(parseInt(campoId), professor);
+
+                // Reexibe os professores
+                exibeProfessor();
+
+                // Limpa o formulario
+                $("#form-professor")[0].reset();
+            });
+
+            // Intercepta o click do botão Excluir
+            $("#btnDelete").click(function () {
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um professor a ser excluído.");
+                    return;
+                }
+                deleteProfessor(parseInt(campoId));
+
+                // Reexibe os professores
+                exibeProfessor();
+
+                // Limpa o formulario
+                $("#form-professor")[0].reset();
+            });
+
+            // Intercepta o click do botão Listar Professor
+            $("#btnClear").click(function () {
+                $("#form-professor")[0].reset();
+            });
+
+            // Oculta a mensagem de aviso após alguns segundos
+            $('#msg').bind("DOMSubtreeModified", function () {
+                window.setTimeout(function () {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            $("#grid-professor").on("click", "tr", function (e) {
+                let linhaProfessor = this;
+                colunas = linhaProfessor.querySelectorAll("td");
+
+                $("#inputId").val(colunas[0].innerText);
+                $("#inputNome").val(colunas[1].innerText);
+                $("#inputTelefone").val(colunas[2].innerText);
+                $("#inputEmail").val(colunas[3].innerText);
+                $("#inputProfissao").val(colunas[4].innerText);
+                $("#inputUf").val(colunas[5].innerText);
+                $("#inputCidade").val(colunas[6].innerText);
+                $("#inputMetodologia").val(colunas[7].innerText);                
+                $("#inputPreco").val(colunas[8].innerText);
+            });
+
+            exibeProfessor();
+        }
+    </script>
+</body>
+
+</html>

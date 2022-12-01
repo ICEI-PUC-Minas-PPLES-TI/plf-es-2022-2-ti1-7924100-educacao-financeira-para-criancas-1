@@ -1,0 +1,28 @@
+
+.cartao{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 50px;
+    
+}
+
+.card-img-top{
+    height:600px;
+    width:200px
+}
+
+.botao-server{
+    display:flex;
+    justify-content:center;
+    margin-top:35px;
+}
+
+.informacao-tela{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+    font-size:20px;
+    font-family:Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    margin-left: 40px;
+}
