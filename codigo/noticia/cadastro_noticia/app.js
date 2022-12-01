@@ -39,7 +39,7 @@ var db_noticias_inicial = {
         },
         {
             "id": 5,
-            "titulo": "Primeiro passo da educação financeira é reconhecer necessidade de se organizar, afirma economista",
+            "titulo": "É necessario se organizar",
             "data_publicacao": "04/10/2022",
             "categoria": "educacao",
             "link": "https://g1.globo.com/pr/parana/economia/educacao-financeira-no-parana/noticia/2022/10/04/primeiro-passo-da-educacao-financeira-e-reconhecer-necessidade-de-se-organizar-afirma-economista.ghtml",
@@ -61,12 +61,12 @@ var db_noticias_inicial = {
             "data_publicacao": "27/09/2022",
             "categoria": "educacao",
             "link": "https://g1.globo.com/pr/parana/economia/educacao-financeira-no-parana/noticia/2022/09/27/10-primeiros-passos-para-iniciar-a-educacao-financeira.ghtml",
-            "autor": "Heitor Peres Trevisan Filho ",
+            "autor": "Heitor Peres Trevisan Filho",
            
         },
         {
             "id": 8,
-            "titulo": "Identificar gastos e receitas melhora a vida financeira, alerta economista; veja como criar o próprio controle",
+            "titulo": "Identificar gastos e receitas melhora a vida financeira",
             "data_publicacao": "19/10/2022",
             "categoria": "educacao",
             "link": "https://g1.globo.com/pr/parana/economia/educacao-financeira-no-parana/noticia/2022/10/19/identificar-gastos-e-receitas-melhora-a-vida-financeira-alerta-economista-veja-como-criar-o-proprio-controle.ghtml",
@@ -88,7 +88,7 @@ var db_noticias_inicial = {
             "data_publicacao": "17/10/2022",
             "categoria": "casal",
             "link": "https://g1.globo.com/podcast/educacao-financeira/noticia/2022/10/17/educacao-financeira-215-como-falar-de-dinheiro-entre-um-casal.ghtml",
-            "autor": "Ana Carla Muñoz Dentello ",
+            "autor": "Ana Carla Muñoz Dentello",
            
         }
     ]
