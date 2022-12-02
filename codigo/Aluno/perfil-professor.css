@@ -1,0 +1,37 @@
+.cartao{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 50px;
+    
+}
+
+.card {
+    border: solid;
+    border-radius: 30px;
+    background-color:#212529 ;
+}
+
+#imagem-aluno {
+    border-radius: 30px;
+    border: solid;
+    border-color:rgb(255, 255, 255);
+}
+
+#imagem-aluno:hover{
+    border-color: rgb(30, 96, 48);
+}
+
+.card-title {
+    
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+}   
+
+.card-text {
+    color: white;
+    font-size: large;
+    border-bottom: solid 1px;
+    border-bottom-color: #828282;
+}
