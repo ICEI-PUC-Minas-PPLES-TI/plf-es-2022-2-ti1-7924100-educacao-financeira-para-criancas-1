@@ -53,8 +53,6 @@
             </ul>
         </div>
 
-        <!-- TODO Se n logado mandar para login else perfil-->
-
         <a class="navbar-brand" id="perfil_ou_login"><i class="bi bi-person-circle"></i></a>
 
     </nav>
@@ -107,20 +105,12 @@
                 var id_usuario = pair[1];
             }
 
-            console.log(id_usuario);
-            console.log(usuarioCorrente);
-            console.log(db_aluno)
-
             for (i = 0; i < db_aluno.data.length; i++) {
                 let aluno_i = db_aluno.data[i];
                 if (aluno_i.usuario_id == id_usuario) {
                     var aluno = db_aluno.data[i];
                 }
             }
-
-            console.log(aluno);
-
-            console.log(db_aluno.data[db_aluno.data.length - 1]);
 
             $("#card_aluno").html("");
 
