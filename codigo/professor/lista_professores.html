@@ -1,0 +1,280 @@
+<!-- ARQUIVO HTML DA HOMEPAGE INTEIRA -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank-Id</title>
+
+    <link rel="stylesheet" href="/codigo/styles/styles.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/style_index.css">
+
+    <!-- Icons Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="/codigo/homepage/home.html"><img class="rounded imagem_nav"
+                src="/codigo/images/logo_bankid.png" alt="Logo Bank-id"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+                <li class="nav-item mr-3 ml-3">
+                    <a class="nav-link" href="/codigo/homepage/home.html#parte_sobre">Sobre</a>
+                </li>
+                <li class="nav-item mr-3 ml-3">
+                    <a class="nav-link" href="/codigo/homepage/home.html#parte_aprender">Começe a Aprender</a>
+                </li>
+                <li class="nav-item mr-3 ml-3 ">
+                    <a class="nav-link" href="/codigo/homepage/home.html#parte_noticias">Notícias</a>
+                </li>
+                <li class="nav-item mr-3 ml-3">
+                    <a class="nav-link" href="/codigo/homepage/home.html#parte_equipe">Nossa Equipe</a>
+                </li>
+                <li class="nav-item mr-3 ml-3">
+                    <a class="nav-link" href="/codigo/homepage/home.html#parte_ajuda">Ajuda</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="container pt-4">
+
+        <form id="form-professor"> <!--Aqui depois fazer um filtro para cidade e estado alterar la em baixo onde está o filtro_metodologia-->
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <select name="filtro_uf" id="filtro_uf" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Estado</option>
+                        <option></option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select name="filtro_metodologia" id="filtro_metodologia" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Metodologia de Ensino</option>
+                        <option value="Slides">Slides</option>
+                        <option value="Livros">Livros</option>
+                        <option value="Slides e atividades">Slides e atividades</option>
+                        <option value="Livros e atividades">Livros e atividades</option>
+                        <option value="Slides, livros e atividades">Slides, livros e atividades</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select name="filtro_preco" id="filtro_preco" onchange="ListaProfessor()"
+                        class="form-control">
+                        <option value="">Filtrar por Valor da aula</option>
+                        <option value="Até R$50,00">Até R$50,00</option>
+                        <option value="De R$50,00 a R$100,00">De R$50,00 a R$100,00</option>
+                        <option value="De R$100,00 a R$150,00">De R$100,00 a R$150,00</option>
+                        <option value="De R$150,00 a R$200,00">De R$150,00 a R$200,00</option>
+                        <option value="De R$200,00 a R$250,00">De R$200,00 a R$250,00</option>
+                        <option value="De R$250,00 a R$300,00">De R$250,00 a R$300,00</option>
+                        <option value="De R$300,00 a R$400,00">De R$300,00 a R$400,00</option>
+                        <option value="De R$400,00 a R$500,00">De R$400,00 a R$500,00</option>
+                        <option value="Acima de R$500,00">Acima de R$500,00</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+
+    <section class="py-4">
+        <div class="container px-3" id="lista_professores">
+
+            <div id="professores_row1" class="row gx-5 mb-5">
+                <div class="col-lg-3">
+
+                </div>
+
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+
+            <div id="professores_row2" class="row gx-5 mb-5">
+                <div class="col-lg-3">
+
+                </div>
+
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+
+            <div id="professores_row3" class="row gx-5 mb-5">
+                <div class="col-lg-3">
+
+                </div>
+
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="cadastro_professor/app.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#professores_row1").html("");
+
+            for (i = 0; i < 4; i++) {
+                let professor = db_professores.data[i];
+                $("#professores_row1").append(`<div class="col-lg-3 mb-5 mb-lg-0 pb-5">
+
+
+        
+                    <div class="card" style="width: 18rem; height: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">${professor.nome}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">${professor.profissao}</h6>
+    <p class="card-text"><b>Metodologia:</b> ${professor.metodologia}</p>
+    <p class="card-text"><b>Preço:</b> ${professor.preco}</p>
+    <p class="card-text"><b>UF:</b> ${professor.uf}</p>
+    <a href="/codigo/professor/detalhe_professor.html?id_professor=${professor.id}" class="btn btn-primary">Ver detalhes</a>
+  </div>
+</div>
+
+
+    </div>`);
+            }
+            
+            $("#professores_row2").html("");
+
+            for (i = 4; i < 8; i++) {
+                let professor = db_professores.data[i];
+                $("#professores_row2").append(`<div class="col-lg-3 mb-5 mb-lg-0 pb-5">
+
+
+        
+                    <div class="card" style="width: 18rem; height: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">${professor.nome}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">${professor.profissao}</h6>
+    <p class="card-text"><b>Metodologia:</b>:${professor.email}</p>
+    <p class="card-text"><b>Preço:</b>${professor.preco}</p>
+    <p class="card-text"><b>UF:</b> ${professor.uf}</p>
+    
+    <a href="/codigo/professor/detalhe_professor.html?id_professor=${professor.id}" class="btn btn-primary">Ver detalhes</a>
+  </div>
+</div>
+
+
+    </div>`);
+            }
+
+
+        })
+
+
+
+    </script>
+
+
+<script>
+    // função para listar na tabela os professores que estão associados aos filtros 
+    function ListaProfessor() {
+
+        // Obtem os dados informados pelo usuário nos filtros
+        let fm = document.getElementById('filtro_metodologia').value;
+        let fuf = document.getElementById('filtro_uf').value;
+        let fpr = document.getElementById('filtro_preco').value;
+
+        $("#professores_row1").html("");
+
+        $("#professores_row2").html("");
+
+        // Popula a tabela com os registros do banco de dados
+        for (let index = 0; index < db_professores.data.length; index++) {
+            const professor = db_professores.data[index];
+
+            // Verifica se os dados do professor batem com os filtros
+            if (((professor.metodologia == fm) || (fm == '')) &&
+                ((professor.uf == fuf) || (fuf == '')) &&
+                ((professor.preco == fpr) || (fpr == ''))){
+
+                // Inclui o professor na tabela    
+                $("#professores_row1").append(`<div class="col-lg-3 mb-5 mb-lg-0 pb-5">
+
+
+        
+<div class="card" style="width: 18rem;">
+<div class="card-body">
+<h5 class="card-title">${professor.nome}</h5>
+<h6 class="card-subtitle mb-2 text-muted">${professor.profissao}</h6>
+<p class="card-text">${professor.email}</p>
+<p class="card-text">${professor.preco}</p>
+<a href="/codigo/professor/detalhe_professor.html?id_professor=${professor.id}" class="btn btn-primary">Ver detalhes</a>
+</div>
+</div>
+
+
+</div>`);
+            }
+        }
+
+    }
+</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

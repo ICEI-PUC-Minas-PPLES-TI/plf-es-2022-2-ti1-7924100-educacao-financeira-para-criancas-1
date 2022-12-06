@@ -2,142 +2,452 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <style>
+        .modal-body {
+            max-height: calc(100vh - 210px);
+            overflow-y: auto;
+        }
+    </style>
+
 </head>
 
 <body>
-	<div id="login">
-		<h3 class="text-center text-white pt-5">Novo Usuário</h3>
-		<div class="container">
-			<div id="login-row" class="row justify-content-center align-items-center">
-				<div id="login-column" class="col-md-6">
-					<div id="login-box" class="col-md-12">
-						<form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
-							<h3 class="text-center text-info">Login</h3>
-							<div class="form-group">
-								<label for="username" class="text-info">Usuário</label><br>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Novo Usuário</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Usuário</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Senha</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
-                            <div class="form-group text-right">                                
+                            <div class="form-group text-right">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Novo usuario</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Novo
+                        usuario</button>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login App</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div id="login-box" class="col-md-12">
-                <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
-                    <h3 class="text-center text-info">Novo usuário</h3>
-                    <div class="form-group">
-                        <label for="login" class="text-info">Usuário</label><br>
-                        <input type="text" name="txt_login" id="txt_login" class="form-control">
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login App</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
+                            <h3 class="text-center text-info">Novo usuário</h3>
+                            <div class="form-group">
+                                <label for="login" class="text-info">Usuário</label><br>
+                                <input type="text" name="txt_login" id="txt_login" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="nome" class="text-info">Nome completo</label><br>
+                                <input type="text" name="txt_nome" id="txt_nome" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-info">email</label><br>
+                                <input type="text" name="txt_email" id="txt_email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" class="text-info">Senha</label><br>
+                                <input type="password" name="txt_senha" id="txt_senha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="senha2" class="text-info">Confirmação de Senha</label><br>
+                                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-select" aria-label="Default select example" id="prof_aluno_escolha">
+                                    <option value="Aluno" selected>Aluno</option>
+                                    <option value="Professor">Professor</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="nome" class="text-info">Nome completo</label><br>
-                        <input type="text" name="txt_nome" id="txt_nome" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="text-info">email</label><br>
-                        <input type="text" name="txt_email" id="txt_email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha" class="text-info">Senha</label><br>
-                        <input type="password" name="txt_senha" id="txt_senha" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha2" class="text-info">Confirmação de Senha</label><br>
-                        <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
+                </div>
             </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <!-- Modal Professor -->
+    <div class="modal fade" id="professorModal" tabindex="-1" role="dialog" aria-labelledby="professorModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="professorModalLabel">Info Professor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="professor-box" class="col-md-12">
+                        <form id="professor-form" class="form" method="post" onsubmit="criaProfessor (this)">
+                            <h3 class="text-center text-info">Adicione suas informações</h3>
+                            <div class="form-group">
+                                <label for="nome_prof" class="text-info">Nome</label><br>
+                                <input type="text" name="txt_nome_prof" id="txt_nome_prof" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="profissao_prof" class="text-info">Profissão</label><br>
+                                <input type="text" name="txt_profissao_prof" id="txt_profissao_prof"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone_prof" class="text-info">Telefone</label><br>
+                                <input type="text" name="txt_telefone_prof" id="txt_telefone_prof" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="uf_prof" class="text-info">UF</label><br>
+                                <input type="text" name="txt_uf_prof" id="txt_uf_prof" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade_prof" class="text-info">Cidade</label><br>
+                                <input type="text" name="txt_cidade_prof" id="txt_cidade_prof" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="metodologia_prof" class="text-info">Metodologia</label><br>
+                                <input type="text" name="txt_metodologia_prof" id="txt_metodologia_prof"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="preco_prof" class="text-info">Preço</label><br>
+                                <input type="text" name="txt_preco_prof" id="txt_preco_prof" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar_professor" class="btn btn-info">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Aluno -->
+    <div class="modal fade" id="alunoModal" tabindex="-1" role="dialog" aria-labelledby="alunoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alunoModalLabel">Info Aluno</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="aluno-box" class="col-md-12">
+                        <form id="aluno-form" class="form" method="post" onsubmit="criaAluno (this)">
+                            <h3 class="text-center text-info">Adicione suas informações</h3>
+                            <div class="form-group">
+                                <label for="nome_aluno" class="text-info">Nome</label><br>
+                                <input type="text" name="txt_nome_aluno" id="txt_nome_aluno" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="idade_aluno" class="text-info">Idade</label><br>
+                                <input type="text" name="txt_idade_aluno" id="txt_idade_aluno" class="form-control"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="escolaridade_aluno" class="text-info">Escolaridade</label><br>
+                                <input type="text" name="txt_escolaridade_aluno" id="txt_escolaridade_aluno"
+                                    class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="responsavel_aluno" class="text-info">Responsável</label><br>
+                                <input type="text" name="txt_responsavel_aluno" id="txt_responsavel_aluno"
+                                    class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone_aluno" class="text-info">Telefone</label><br>
+                                <input type="text" name="txt_telefone_aluno" id="txt_telefone_aluno"
+                                    class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="uf_aluno" class="text-info">UF</label><br>
+                                <input type="text" name="txt_uf_aluno" id="txt_uf_aluno" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade_aluno" class="text-info">Cidade</label><br>
+                                <input type="text" name="txt_cidade_aluno" id="txt_cidade_aluno" class="form-control"
+                                    required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar_aluno" class="btn btn-info">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="login.js"></script>
+
+
     <script>
-        
+        var db_professor_inicial = {
+    "data": [
+        {
+            "id": 1,
+            "nome": "Igor Junior",
+            "telefone": "11 912345678",
+            "email": "example@example.hgd",            
+            "profissao": "Assessor Financeiro",
+            "uf": "SP",
+            "cidade": "São Paulo",
+            "metodologia": "Slides",            
+            "preco" : "De R$100,00 a R$150,00",
+            "usuario_id": 6,
+        },
+        {
+            "id": 2,
+            "nome": "Aline Gonçalves",
+            "telefone": "31 987654321",
+            "email": "example@example.ghj",
+            "profissao": "Professora de Matemática",
+            "uf": "MG",
+            "cidade": "Tiradentes",
+            "metodologia": "Livros",
+            "preco": "De R$150,00 a R$200,00",
+            "usuario_id": 7,
+        },
+        {
+            "id": 3,
+            "nome": "Matheus Ribeiro",
+            "telefone": "77 912348765",
+            "email": "example@example.lkj",
+            "profissao": "Contador",
+            "uf": "BA",
+            "cidade": "Salvador",
+            "metodologia": "Slides e atividades",
+            "preco": "Até R$50,00",
+            "usuario_id": 8
+        }
+    ]
+}
+
+// Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
+var db_professores = JSON.parse(localStorage.getItem('db_professor'));
+if (!db_professores) {
+    db_professores = db_professor_inicial
+};
+
+// Conjunto inicial de alunos: DADOS MOCK/FAKE
+var db_aluno_inicial = {
+    "data": [
+        {
+            "id": 1,
+            "nome": "Giovanna Barcelos",
+            "idade": "11",
+            "escolaridade": "Ensino Fundamental I",
+            "responsavel": "Luiza Barcelos",
+            "telefone": "11 912345678",
+            "uf": "SP",
+            "cidade": "Campinas",
+            "usuario_id": 3,
+        },
+        {
+            "id": 2,
+            "nome": "Tadeu Chagas",
+            "idade": "10",
+            "escolaridade": "Ensino Fundamental I",
+            "responsavel": "André Chagas",
+            "telefone": "11 987654321",
+            "uf": "SC",
+            "cidade": "Florianópolis",
+            "usuario_id": 4,
+        },
+        {
+            "id": 3,
+            "nome": "Valentina Rodrigues",
+            "idade": "13",
+            "escolaridade": "Ensino Fundamental II",
+            "responsavel": "Maurício Rodrigues",
+            "telefone": "11 543216789",
+            "uf": "BA",
+            "cidade": "Salvador",
+            "usuario_id": 5,
+        }
+    ]
+}
+
+// Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
+var db_aluno = JSON.parse(localStorage.getItem('db_aluno'));
+if (!db_aluno) {
+    db_aluno = db_aluno_inicial
+};
+
         // Declara uma função para processar o formulário de login
-        function processaFormLogin (event) {                
-                // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-                event.preventDefault ();
+        function processaFormLogin(event) {
+            // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+            event.preventDefault();
 
-                // Obtem os dados de login e senha a partir do formulário de login
-                var username = document.getElementById('username').value;
-                var password = document.getElementById('password').value;
+            // Obtem os dados de login e senha a partir do formulário de login
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
-                // Valida login e se estiver ok, redireciona para tela inicial da aplicação
-                resultadoLogin = loginUser (username, password);
-                if (resultadoLogin) {
-                    window.location.href = 'index.html';
-                }
-                else { // Se login falhou, avisa ao usuário
-                    alert ('Usuário ou senha incorretos');
-                }
+            // Valida login e se estiver ok, redireciona para tela inicial da aplicação
+            resultadoLogin = loginUser(username, password);
+            if (resultadoLogin) {
+                window.location.href = '/codigo/homepage/home.html';
+            }
+            else { // Se login falhou, avisa ao usuário
+                alert('Usuário ou senha incorretos');
+            }
         }
 
-        function salvaLogin (event) {
+        function salvaLogin(event) {
             // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-            event.preventDefault ();
+            event.preventDefault();
 
             // Obtem os dados do formulário
-            let login  = document.getElementById('txt_login').value;
-            let nome   = document.getElementById('txt_nome').value;
-            let email  = document.getElementById('txt_email').value;
-            let senha  = document.getElementById('txt_senha').value;
+            let login = document.getElementById('txt_login').value;
+            let nome = document.getElementById('txt_nome').value;
+            let email = document.getElementById('txt_email').value;
+            let senha = document.getElementById('txt_senha').value;
             let senha2 = document.getElementById('txt_senha2').value;
+            let prof_aluno = document.getElementById("prof_aluno_escolha").value;
+
+
             if (senha != senha2) {
-                alert ('As senhas informadas não conferem.');
+                alert('As senhas informadas não conferem.');
                 return
             }
 
+            $('#loginModal').modal('hide');
+
+
+            if (prof_aluno == "Aluno") {
+                $('#alunoModal').modal('show');
+            } else {
+                $('#professorModal').modal('show');
+            }
+
             // Adiciona o usuário no banco de dados
-            addUser (nome, login, senha, email);
-            alert ('Usuário salvo com sucesso. Proceda com o login para ');
+            addUser(nome, login, senha, email, prof_aluno);
+
+
+
 
             // Oculta a div modal do login
             //document.getElementById ('loginModal').style.display = 'none';
-            $('#loginModal').modal('hide');
+        }
+
+        function criaAluno(event) {
+            // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+            event.preventDefault();
+
+            // Obtem os dados do formulário
+            let novoId = db_aluno.data[db_aluno.data.length - 1].id + 1;
+            let nome = document.getElementById('txt_nome_aluno').value;
+            let idade = document.getElementById('txt_idade_aluno').value;
+            let escolaridade = document.getElementById('txt_escolaridade_aluno').value;
+            let responsavel = document.getElementById('txt_responsavel_aluno').value;
+            let telefone = document.getElementById("txt_telefone_aluno").value;
+            let uf = document.getElementById("txt_uf_aluno").value;
+            let cidade = document.getElementById("txt_cidade_aluno").value;
+
+
+            $('#alunoModal').modal('hide');
+
+            let usuario_apenas_criado = db_usuarios.usuarios[db_usuarios.usuarios.length - 1];
+            let id_usuario_aluno = usuario_apenas_criado.id;
+
+            let newId = generateUUID();
+            let aluno = { "id": novoId, "nome": nome, "idade": idade, "escolaridade": escolaridade, "responsavel": responsavel, "telefone": telefone, "uf": uf, "cidade": cidade, "usuario_id": id_usuario_aluno };
+            db_aluno.data.push(aluno);
+
+            // Salva o novo banco de dados com o novo usuário no localStorage
+            localStorage.setItem('db_aluno', JSON.stringify(db_aluno));
+
+
+        }
+
+        function criaProfessor(event) {
+            // Cancela a submissão do formulário para tratar sem fazer refresh da tela
+            event.preventDefault();
+
+            // Obtem os dados do formulário
+            let novoId = db_professores.data[db_professores.data.length - 1].id + 1;
+            let nome = document.getElementById('txt_nome_aluno').value;
+            let profissao = document.getElementById('txt_profissao_prof').value;
+            let telefone = document.getElementById('txt_telefone_prof').value;
+            let uf = document.getElementById('txt_uf_prof').value;
+            let cidade = document.getElementById("txt_cidade_prof").value;
+            let metodologia = document.getElementById("txt_metodologia_prof").value;
+            let preco = document.getElementById("txt_preco_prof").value;
+
+
+            $('#professorModal').modal('hide');
+
+            // Adiciona o usuário no banco de dados
+            let usuario_apenas_criado = db_usuarios.usuarios[db_usuarios.usuarios.length - 1];
+            let id_usuario_professor = usuario_apenas_criado.id;
+
+            let newId = generateUUID();
+            let professor = { "id": novoId, "nome": nome, "profissao": profissao, "telefone": telefone, "uf": uf, "metodologia": metodologia, "preco": preco, "cidade": cidade, "usuario_id": id_usuario_professor };
+            db_professores.data.push(professor);
+
+            // Salva o novo banco de dados com o novo usuário no localStorage
+            localStorage.setItem('db_professor', JSON.stringify(db_professores));
+
+            // Oculta a div modal do login
+            //document.getElementById ('loginModal').style.display = 'none';
         }
 
         // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-        document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
+        document.getElementById('login-form').addEventListener('submit', processaFormLogin);
 
 
         // Associar salvamento ao botao
-        document.getElementById ('btn_salvar').addEventListener ('click', salvaLogin);        
+        document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
+        document.getElementById('btn_salvar_professor').addEventListener('click', criaProfessor);
+        document.getElementById('btn_salvar_aluno').addEventListener('click', criaAluno);     
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

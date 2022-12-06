@@ -10,7 +10,8 @@ var db_professor_inicial = {
             "uf": "SP",
             "cidade": "São Paulo",
             "metodologia": "Slides",            
-            "preco" : "De R$100,00 a R$150,00"
+            "preco" : "De R$100,00 a R$150,00",
+            "usuario_id": 6,
         },
         {
             "id": 2,
@@ -21,7 +22,8 @@ var db_professor_inicial = {
             "uf": "MG",
             "cidade": "Tiradentes",
             "metodologia": "Livros",
-            "preco": "De R$150,00 a R$200,00"
+            "preco": "De R$150,00 a R$200,00",
+            "usuario_id": 7,
         },
         {
             "id": 3,
@@ -32,15 +34,16 @@ var db_professor_inicial = {
             "uf": "BA",
             "cidade": "Salvador",
             "metodologia": "Slides e atividades",
-            "preco": "Até R$50,00"
+            "preco": "Até R$50,00",
+            "usuario_id": 8
         }
     ]
 }
 
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais
-var db = JSON.parse(localStorage.getItem('db_professor'));
-if (!db) {
-    db = db_professor_inicial
+var db_professores = JSON.parse(localStorage.getItem('db_professor'));
+if (!db_professores) {
+    db_professores = db_professor_inicial
 };
 
 // Exibe mensagem em um elemento de ID msg
@@ -51,8 +54,8 @@ function displayMessage(msg) {
 function insertProfessor(professor) {
     // Calcula novo Id a partir do último código existente no array (PODE GERAR ERRO SE A BASE ESTIVER VAZIA)
     let novoId = 1;
-    if (db.data.length != 0)
-        novoId = db.data[db.data.length - 1].id + 1;
+    if (db_professores.data.length != 0)
+        novoId = db_professores.data[db_professores.data.length - 1].id + 1;
     let novoProfessor = {
         "id": novoId,
         "nome": professor.nome,
@@ -62,45 +65,47 @@ function insertProfessor(professor) {
         "uf": professor.uf,
         "cidade": professor.cidade,
         "metodologia": professor.metodologia,
-        "preco": professor.preco
+        "preco": professor.preco,
+        "usuario_id": professor.usuario_id,
     };
 
     // Insere o novo objeto no array
-    db.data.push(novoProfessor);
+    db_professores.data.push(novoProfessor);
     displayMessage("Professor inserido com sucesso");
 
     // Atualiza os dados no Local Storage
-    localStorage.setItem('db_professor', JSON.stringify(db));
+    localStorage.setItem('db_professor', JSON.stringify(db_professores));
 }
 
 function updateProfessor(id, professor) {
     // Localiza o indice do objeto a ser alterado no array a partir do seu ID
-    let index = db.data.map(obj => obj.id).indexOf(id);
+    let index = db_professores.data.map(obj => obj.id).indexOf(id);
 
     // Altera os dados do objeto no array
-    db.data[index].nome = professor.nome,
-        db.data[index].telefone = professor.telefone,
-        db.data[index].email = professor.email,
-        db.data[index].profissao = professor.profissao,
-        db.data[index].uf = professor.uf,
-        db.data[index].cidade = professor.cidade,
-        db.data[index].metodologia = professor.metodologia,
-        db.data[index].preco = professor.preco
+    db_professores.data[index].nome = professor.nome,
+        db_professores.data[index].telefone = professor.telefone,
+        db_professores.data[index].email = professor.email,
+        db_professores.data[index].profissao = professor.profissao,
+        db_professores.data[index].uf = professor.uf,
+        db_professores.data[index].cidade = professor.cidade,
+        db_professores.data[index].metodologia = professor.metodologia,
+        db_professores.data[index].preco = professor.preco,
+        db_aluno.data[index].usuario_id = professor.usuario_id
 
     displayMessage("Professor alterado com sucesso");
 
     // Atualiza os dados no Local Storage
-    localStorage.setItem('db_professor', JSON.stringify(db));
+    localStorage.setItem('db_professor', JSON.stringify(db_professores));
 }
 
 function deleteProfessor(id) {
     // Filtra o array removendo o elemento com o id passado
-    db.data = db.data.filter(function (element) { return element.id != id });
+    db_professores.data = db_professores.data.filter(function (element) { return element.id != id });
 
     displayMessage("Professor removido com sucesso");
 
     // Atualiza os dados no Local Storage
-    localStorage.setItem('db_professor', JSON.stringify(db));
+    localStorage.setItem('db_professor', JSON.stringify(db_professores));
 }
 
 //API IBGE para Estados e Municípios

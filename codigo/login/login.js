@@ -1,4 +1,4 @@
-//
+//html
 //
 // Disciplina: Trabalho Interdisciplinar - Aplicações Web
 // Professor: Rommel Vieira Carneiro (rommelcarneiro@gmail.com)
@@ -37,8 +37,8 @@ function generateUUID() { // Public Domain/MIT
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com"},
-        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com"},
+        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "prof_aluno": "Professor"},
+        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "prof_aluno": "Aluno"},
     ]
 };
 
@@ -89,6 +89,7 @@ function loginUser (login, senha) {
             usuarioCorrente.login = usuario.login;
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.nome = usuario.nome;
+            usuarioCorrente.prof_aluno = usuario.prof_aluno
             
             // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
             sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
@@ -109,11 +110,11 @@ function logoutUser () {
     window.location = LOGIN_URL;
 }
 
-function addUser (nome, login, senha, email) {
+function addUser (nome, login, senha, email, prof_aluno) {
     
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID ();
-    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email };
+    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "prof_aluno": prof_aluno };
     
     // Inclui o novo usuario no banco de dados baseado em JSON
     db_usuarios.usuarios.push (usuario);

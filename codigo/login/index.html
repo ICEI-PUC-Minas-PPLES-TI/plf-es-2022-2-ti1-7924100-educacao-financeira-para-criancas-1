@@ -19,7 +19,7 @@
             let listaUsuarios = '';
             for (i = 0; i < db_usuarios.usuarios.length; i++) {
                 let usuario = db_usuarios.usuarios[i];
-                listaUsuarios += `<tr><td scope="row">${usuario.nome}</td><td>${usuario.login}</td><td>${usuario.email}</td></tr>`;
+                listaUsuarios += `<tr><td scope="row">${usuario.nome}</td><td>${usuario.login}</td><td>${usuario.email}</td><td>${usuario.prof_aluno}</td><td>${usuario.id}</td></tr>`;
             }
 
             // Substitui as linhas do corpo da tabela
@@ -58,10 +58,14 @@
                             <th scope="col">Nome</th>
                             <th scope="col">login</th>
                             <th scope="col">E-mail</th>
+                            <th scope="col">Professor ou Aluno</th>
+                            <th scope="col">ID do usuário</th>
                         </tr>
                     </thead>
                     <tbody id="table-usuarios">
                         <tr>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

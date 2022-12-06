@@ -59,6 +59,12 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group row"> 
+                <div class="col-sm-6">
+                    <label for="inputUsuario_id">Id do Usuário*</label>
+                    <input type="text" class="form-control" id="inputUsuario_id" required placeholder="Insira o id do usuário">
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-sm-6">
                     <label for="inputMetodologia">Metodologia de Ensino*</label>
@@ -115,11 +121,13 @@
                             <th scope="col">Cidade</th>
                             <th scope="col">Metodologia de Ensino</th>
                             <th scope="col">Valor da aula</th>
+                            <th scope="col">Id do usuário</th>
                         </tr>
                     </thead>
                     <tbody id="table-professor">
                         <tr>
                             <td scope="row">1</td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -154,6 +162,7 @@
                                                 <td>${professor.cidade}</td>
                                                 <td>${professor.metodologia}</td>
                                                 <td>${professor.preco}</td>
+                                                <td>${professor.usuario_id}</td>
                                             </tr>`);
             }
         }
@@ -176,6 +185,7 @@
                 let campoCidade = $('#inputCidade').val();
                 let campoMetodologia = $('#inputMetodologia').val();
                 let campoPreco = $('#inputPreco').val();
+                let campoUsuario_id = $('#inputUsuario_id').val();
                 let professor = { nome: campoNome, 
                     telefone: campoTelefone, 
                     email: campoEmail, 
@@ -183,7 +193,9 @@
                     uf: campoUf,
                     cidade: campoCidade,                    
                     metodologia: campoMetodologia,                    
-                    preco: campoPreco };
+                    preco: campoPreco,
+                    usuario_id: campoUsuario_id,
+                 };
 
                 insertProfessor(professor);
 
@@ -210,6 +222,7 @@
                 let campoCidade = $('#inputCidade').val();
                 let campoMetodologia = $("#inputMetodologia").val();
                 let campoPreco = $('#inputPreco').val();
+                let campoUsuario_id = $('#inputUsuario_id').val();
                 let professor = { nome: campoNome, 
                     telefone: campoTelefone, 
                     email: campoEmail, 
@@ -217,7 +230,9 @@
                     uf: campoUf,
                     cidade: campoCidade,                    
                     metodologia: campoMetodologia, 
-                    preco: campoPreco };
+                    preco: campoPreco,
+                    usuario_id: campoUsuario_id,
+                };
 
                 updateProfessor(parseInt(campoId), professor);
 
@@ -272,6 +287,7 @@
                 $("#inputCidade").val(colunas[6].innerText);
                 $("#inputMetodologia").val(colunas[7].innerText);                
                 $("#inputPreco").val(colunas[8].innerText);
+                $("#inputUsuario_id").val(colunas[9].innerText);
             });
 
             exibeProfessor();

@@ -61,6 +61,7 @@
                             <th scope="col">Telefone</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Cidade</th>
+                            <th scope="col">Id do usuário</th>
                         </tr>
                     </thead>
                     <tbody id="table-aluno">
@@ -84,8 +85,8 @@
             $("#table-aluno").empty();
 
             // Popula a tabela com os registros do banco de dados
-            for (let index = 0; index < db.data.length; index++) {
-                const aluno = db.data[index];
+            for (let index = 0; index < db_aluno.data.length; index++) {
+                const aluno = db_aluno.data[index];
 
                 // Verifica se os dados do aluno batem com os filtros
                 if (((aluno.escolaridade == fe) || (fe == '')) &&
@@ -100,6 +101,7 @@
                                                     <td>${aluno.telefone}</td>
                                                     <td>${aluno.uf}</td>
                                                     <td>${aluno.cidade}</td>
+                                                    <td>${aluno.usuario_id}</td>
                                                 </tr>`);
                 }
             }

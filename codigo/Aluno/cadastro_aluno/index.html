@@ -69,6 +69,12 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group row"> 
+                <div class="col-sm-6">
+                    <label for="inputUsuario_id">Id do Usuário*</label>
+                    <input type="text" class="form-control" id="inputUsuario_id" required placeholder="Insira o id do usuário">
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-sm-4">
                     <small>*Campos obrigatórios</small>
@@ -98,11 +104,13 @@
                             <th scope="col">Telefone</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Cidade</th>
+                            <th scope="col">Id do usuário</th>
                         </tr>
                     </thead>
                     <tbody id="table-aluno">
                         <tr>
                             <td scope="row">1</td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -125,8 +133,8 @@
             $("#table-aluno").html("");
 
             // Popula a tabela com os registros do banco de dados
-            for (i = 0; i < db.data.length; i++) {
-                let aluno = db.data[i];    
+            for (i = 0; i < db_aluno.data.length; i++) {
+                let aluno = db_aluno.data[i];    
                 $("#table-aluno").append(`<tr><td scope="row">${aluno.id}</td>
                                                 <td>${aluno.nome}</td>
                                                 <td>${aluno.idade}</td>
@@ -135,6 +143,7 @@
                                                 <td>${aluno.telefone}</td>
                                                 <td>${aluno.uf}</td>
                                                 <td>${aluno.cidade}</td>
+                                                <td>${aluno.usuario_id}</td>
                                             </tr>`);
             }
         }
@@ -156,13 +165,16 @@
                 let campoTelefone = $('#inputTelefone').val();
                 let campoUf = $('#inputUf').val();
                 let campoCidade = $('#inputCidade').val();
+                let campoUsuario_id = $('#inputUsuario_id').val();
                 let aluno = { nome: campoNome,
                     idade: campoIdade,
                     escolaridade: campoEscolaridade,
                     responsavel: campoResponsavel,
                     telefone: campoTelefone,  
                     uf: campoUf,
-                    cidade: campoCidade };
+                    cidade: campoCidade,
+                    usuario_id: campoUsuario_id,
+                 };
 
                 insertAluno(aluno);
 
@@ -188,13 +200,16 @@
                 let campoTelefone = $("#inputTelefone").val();
                 let campoUf = $('#inputUf').val();
                 let campoCidade = $('#inputCidade').val();
+                let campoUsuario_id = $('#inputUsuario_id').val();
                 let aluno = { nome: campoNome,
                     idade: campoIdade,
                     escolaridade: campoEscolaridade,
                     responsavel: campoResponsavel,
                     telefone: campoTelefone,  
                     uf: campoUf,
-                    cidade: campoCidade };
+                    cidade: campoCidade,
+                    usuario_id: campoUsuario_id,
+                };
 
                 updateAluno(parseInt(campoId), aluno);
 
@@ -246,8 +261,9 @@
                 $("#inputEscolaridade").val(colunas[3].innerText);
                 $("#inputResponsavel").val(colunas[4].innerText);
                 $("#inputTelefone").val(colunas[5].innerText);
-                //$("#inputUf").val(colunas[6].innerText);
-                //$("#inputCidade").val(colunas[7].innerText);
+                $("#inputUf").val(colunas[6].innerText);
+                $("#inputCidade").val(colunas[7].innerText);
+                $("#inputUsuario_id").val(colunas[8].innerText);
             });
 
             exibeAluno();
