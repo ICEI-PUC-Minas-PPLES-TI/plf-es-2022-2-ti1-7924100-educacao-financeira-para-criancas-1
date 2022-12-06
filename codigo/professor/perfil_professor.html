@@ -140,7 +140,7 @@
 
                             <div class="buttons">
 
-                                <button id="btn_logout" class=""btn btn-outline-primary px-4">Logout</button>
+                                <button id="btn_logout" class="btn btn-primary px-4">Logout</button>
                                 <a class="btn btn-primary px-4 ms-3" href="/codigo/professor/tela_reuniao/index.html?id_prof=${professor.id}">Entrar no Server</a>
                             </div>
 
@@ -158,7 +158,7 @@
         function logoutUserProfessor () {
             usuarioCorrente = {};
             sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
-            window.location = "lista_professores.html";
+            window.location = "http://127.0.0.1:5502/codigo/homepage/home.html";
         }
     </script>
 
