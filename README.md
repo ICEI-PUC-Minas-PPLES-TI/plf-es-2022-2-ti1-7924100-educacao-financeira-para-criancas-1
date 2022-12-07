@@ -4,11 +4,9 @@ O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na
 
 ## Alunos integrantes da equipe
 
-* Arthur Davi Alves Barbosa
 * Bruno Rocha Corrêa Urbano
-* Leonardo Lopes de Vasconcellos Paes
 * Pedro de Barros Alves
-* João Vitor Eliazar de Almeida Rocha
+* Leonardo Lopes de Vasconcellos Paes
 
 ## Professores responsáveis
 
