@@ -1,5 +1,3 @@
-# plf-es-2022-2-ti1-7924100-educacao-financeira-para-criancas-1
-
 # Bank-Id
 
 O objetivo geral deste trabalho é idealizar, criar e desenvolver um ambiente na web capaz de conectar alunos, professores e responsáveis para a discussão, ensino e conscientização sobre educação financeira.
